@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# 2016-12-24 03:50
+# 2016-12-24 04:18
 #
 #     by:   fish
 # mailto:   fishdev@qq.com
@@ -76,6 +76,23 @@ if ! wget "${libsodium_url}" -O "${tmp_dir}/${libsodium_file}.tar.gz"; then
 fi
 }
 
+optimized_conf(){
+sed -i '$a\ulimit -SHn 65535' /etc/profile;
+# /etc/security/limits.conf
+if ! wget "${limits_conf_url}" -O "${limits_conf}"; then 
+    echo -e "${red}Error:${plain} Failed to download ${limits_conf}"
+fi
+# /etc/sysctl.d/local.conf
+if ! wget "${sysctl_conf_url}" -O "${sysctl_conf}" && sysctl --system|sysctl -p; then 
+    echo -e "${red}Error:${plain} Failed to download ${sysctl_conf}"
+fi
+if [ $? -eq 0 ]; then
+       echo -e "${green}optimized config successfully${plain}"
+    else
+        echo -e "${red}optimized config${plain} install failed."
+fi
+}
+
 install_libsodium(){
     cd ${tmp_dir}
     tar zxf ${libsodium_file}.tar.gz
@@ -113,28 +130,12 @@ if [ $? -eq 0 ]; then
 fi
 }
 
-optimized_conf(){
-sed -i '$a\ulimit -SHn 65535' /etc/profile;
-# /etc/security/limits.conf
-if ! wget "${limits_conf_url}" -O "${limits_conf}"; then 
-    echo -e "${red}Error:${plain} Failed to download ${limits_conf}"
-fi
-# /etc/sysctl.d/local.conf
-if ! wget "${sysctl_conf_url}" -O "${sysctl_conf}" && sysctl --system|sysctl -p; then 
-    echo -e "${red}Error:${plain} Failed to download ${sysctl_conf}"
-fi
-if [ $? -eq 0 ]; then
-       echo -e "${green}optimized config successfully${plain}"
-    else
-        echo -e "${red}optimized config${plain} install failed."
-fi
-}
 
 check_root
 set_timezone
 disable_selinux
 install_yum
+optimized_conf
 download_shadowsocks_python
 install_shadowsocks_python
-optimized_conf
 rm -rf /var/root/tmp
