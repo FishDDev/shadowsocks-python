@@ -4,7 +4,7 @@
     "local_address":"127.0.0.1",
     "local_port":1080,
     "password":"yufeng",
-    "timeout:"10,
+    "timeout":10,
     "method":"rc4-md5",
-    "fast_open":false
+    "fast_open":false,
 }
