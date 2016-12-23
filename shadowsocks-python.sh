@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# 2016-12-24 04:18
+# 2016-12-24 04:20
 #
 #     by:   fish
 # mailto:   fishdev@qq.com
