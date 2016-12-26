@@ -19,13 +19,13 @@ shadowsocks_python="shadowsocks-python"
 shadowsocks_python_init="/etc/init.d/shadowsocks-python"
 shadowsocks_python_config="/etc/shadowsocks-python/config.json"
 limits_conf="/etc/security/limits.conf"
-sysctl_conf="/etc/sysctl.d/local.conf"
+sysctl_conf="/etc/sysctl.conf"
 
 shadowsocks_python_url="https://github.com/shadowsocks/shadowsocks/archive/master.zip"
 shadowsocks_python_init_url="https://raw.githubusercontent.com/FishDDev/shadowsocks-python/master/etc/init.d/shadowsocks-python"
 shadowsocks_python_config_url="https://raw.githubusercontent.com/FishDDev/shadowsocks-python/master/etc/shadowsocks-python/config.json"
 limits_conf_url="https://raw.githubusercontent.com/FishDDev/shadowsocks-python/master/etc/security/limits.conf"
-sysctl_conf_url="https://raw.githubusercontent.com/FishDDev/shadowsocks-python/master/etc/sysctl.d/local.conf"
+sysctl_conf_url="https://raw.githubusercontent.com/FishDDev/shadowsocks-python/master/etc/sysctl.conf"
 
 #libsodium
 libsodium_file="libsodium-1.0.11"
